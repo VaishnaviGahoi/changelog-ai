@@ -203,8 +203,8 @@ with right_col:
     if history:
         st.markdown("<div style='font-size:0.8rem; color:#64748b; margin-bottom:0.5rem; font-family:JetBrains Mono,monospace; letter-spacing:0.08em;'>RECENT SEARCHES</div>", unsafe_allow_html=True)
         for i, h in enumerate(history[:5]):
-    repo_display = h["repo"].replace("https://github.com/", "")
-    if st.button(f"↩ {repo_display}", key=f"hist_{h['ts']}_{i}", use_container_width=True):
+            repo_display = h["repo"].replace("https://github.com/", "")
+            if st.button(f"↩ {repo_display}", key=f"hist_{h['ts']}_{i}", use_container_width=True):
                 st.session_state.prefill_url = h["repo"]
                 st.rerun()
     else:
@@ -212,7 +212,6 @@ with right_col:
         <div style='background:#13131f; border:1px dashed #2a2a3d; border-radius:10px; padding:1.2rem; text-align:center;'>
             <div style='color:#334155; font-size:0.82rem;'>Recent searches appear here</div>
         </div>""", unsafe_allow_html=True)
-
 # ── GENERATE ─────────────────────────────────────────────────────────────
 if generate_btn:
     if not st.session_state.groq_key:
