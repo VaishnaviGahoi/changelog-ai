@@ -202,9 +202,9 @@ with left_col:
 with right_col:
     if history:
         st.markdown("<div style='font-size:0.8rem; color:#64748b; margin-bottom:0.5rem; font-family:JetBrains Mono,monospace; letter-spacing:0.08em;'>RECENT SEARCHES</div>", unsafe_allow_html=True)
-        for h in history[:5]:
-            repo_display = h["repo"].replace("https://github.com/", "")
-            if st.button(f"↩ {repo_display}", key=f"hist_{h['ts']}_{i}", use_container_width=True):
+        for i, h in enumerate(history[:5]):
+    repo_display = h["repo"].replace("https://github.com/", "")
+    if st.button(f"↩ {repo_display}", key=f"hist_{h['ts']}_{i}", use_container_width=True):
                 st.session_state.prefill_url = h["repo"]
                 st.rerun()
     else:
